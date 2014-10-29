@@ -5,8 +5,17 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace _2_3_geometriska_figurer
+
+
+    
 {
-    class Shape
+    public enum ShapeType : int
+    {
+        Ellipse,
+        Rectangle,
+    }
+
+    public abstract class Shape
     {
         //fält 
         private double _length;
@@ -14,36 +23,48 @@ namespace _2_3_geometriska_figurer
 
         
         //egenskaper
-        public double Area
+        public abstract double Area
         {
-            get { }
-            set { }
+            get;
         }
         
         public double Length
         {
-            get { }
-            set { }
+            get { return _length; }
+            set {
+                if (value <= 0)
+                {
+                    throw new ArgumentException("Värdet är för litet.");
+                }
+                _length = value;
+            }
 
         }
 
-        public double Perimeter
+        public abstract double Perimeter
         {
-            get { }
-            set { }
+            get;
         }
 
         public double Width
         {
-            get { }
-            set { }
+            get { return _width; }
+            set
+            {
+                if (value <= 0)
+                {
+                    throw new ArgumentException("Värdet är för litet.");
+                }
+                _width = value;
+            }
         }
 
 
         //kontruktor
-        protected Shape() //ansvara för att fälten, via egenskaperna, tilldelas de värden konstruktorns parametrar har
+        protected Shape(double length, double width) //ansvara för att fälten, via egenskaperna, tilldelas de värden konstruktorns parametrar har
         {
-
+            Length = length;
+            Width = width;
         }
         
         /*Metoden ToString 
@@ -56,7 +77,7 @@ namespace _2_3_geometriska_figurer
          * Omkrets:      Perimeter 
          * Area   :      Area*/
 
-        public string ToString() //returtyp?
+        public override string ToString() 
         {
             return String.Format("Längd  :      {0}\nBredd  :      {1}\nOmkrets:      {2}\nArea   :      {3}", Length, Width, Perimeter, Area);
         }

@@ -6,28 +6,24 @@ using System.Threading.Tasks;
 
 namespace _2_3_geometriska_figurer
 {
-    class Rectangle
+    class Rectangle : Shape
     {
         //egenskaper
-        public double Area
+        public override double Area //beräknar
         {
-            get { }
-            set { }
+            get { return Length * Width; }
         }
 
-        public double Perimeter
+        public override double Perimeter //beräknar
         {
-            get { }
-            set { }
+            get { return (2 * Length) + (2 * Width); }
         }
 
         //kontruktor
-        public Rectangle()
-            :base(_length, _width)
+        public Rectangle(double Length, double Width)
+            : base(Length, Width) // konstruktorn i Shape samma som ellipse
         {
 
         }
-
-
     }
 }

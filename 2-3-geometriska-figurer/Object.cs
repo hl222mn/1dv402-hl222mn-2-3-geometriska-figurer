@@ -8,5 +8,6 @@ namespace _2_3_geometriska_figurer
 {
     class Object
     {
+
     }
 }
